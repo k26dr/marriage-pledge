@@ -7,14 +7,16 @@ const EntryView = ({ marriagePledgeHover, marriagePledgeHoverOn, marriagePledgeH
         height: window.innerHeight
     }
     const textStyle = {
-        fontSize: '4em',
         textAlign: 'center',
-        color: 'white'
+        color: 'white',
+        fontSize: '4em',
     }
-    const upperTextStyle = {
+    let upperTextStyle = {
         ...textStyle,
         paddingTop: window.innerHeight * .3
     }
+    if (window.innerWidth < 600)
+        upperTextStyle.paddingTop = window.innerHeight * .1
     let lowerTextStyle = {
         ...textStyle,
         marginTop: 10,
