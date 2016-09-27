@@ -64,7 +64,7 @@ const HowItWorks = () => {
         },
         {
             image: "https://cdn4.iconfinder.com/data/icons/medical-blood-1/512/donation-512.png",
-            text: "If you don't get married within the year, we charge your credit card and donate the money to the charity of your choice."
+            text: "If you don't get married within the year, we charge your credit card and donate 90% of the money to the charity of your choice."
         }
     ]
     const stepDivs = steps.map((step, index) => (
@@ -99,6 +99,13 @@ const Step = ({ image, text }) => {
     )
 }
 
+const SignUp = () => {
+    return (
+        <div id="signup">
+        </div>
+    )
+}
+
 let Landing = ({ marriagePledgeHover, marriagePledgeHoverOn, marriagePledgeHoverOff }) => {
     
     return (
@@ -107,6 +114,7 @@ let Landing = ({ marriagePledgeHover, marriagePledgeHoverOn, marriagePledgeHover
             marriagePledgeHoverOn={marriagePledgeHoverOn}  
             marriagePledgeHoverOff={marriagePledgeHoverOff}  />
             <HowItWorks />
+            <SignUp />
         </div>
     )
 }
