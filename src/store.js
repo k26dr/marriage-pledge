@@ -1,17 +1,21 @@
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
+import { routerReducer } from 'react-router-redux'
 
-function reducer(state = [], action) {
+function landingReducer(state = [], action) {
     switch (action.type) {
     case 'TOGGLE_HOVER_MARRIAGE_PLEDGE':
-        let newState = {...state}
-        newState.landing.marriagePledgeHover = action.hover
-        return newState
+        return {...state, marriagePledgeHover: action.hover}
     default:
         return state
     }
 }
 
-let store = createStore(reducer, {
+const reducers = combineReducers({
+    landing: landingReducer,
+    routing: routerReducer
+})
+
+let store = createStore(reducers, {
     landing: {
         marriagePledgeHover: false
     }

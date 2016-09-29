@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router'
 
 const EntryView = ({ marriagePledgeHover, marriagePledgeHoverOn, marriagePledgeHoverOff }) => {
     const entryViewStyle = {
@@ -17,24 +18,30 @@ const EntryView = ({ marriagePledgeHover, marriagePledgeHoverOn, marriagePledgeH
     }
     if (window.innerWidth < 600)
         upperTextStyle.paddingTop = window.innerHeight * .1
-    let lowerTextStyle = {
-        ...textStyle,
-        marginTop: 10,
-        fontWeight: 'bold'
+    const lowerTextStyle = {
+        textAlign: 'center',
+        marginTop: 10
+    }
+    let linkStyle = {
+        color: 'white',
+        fontSize: '4em',
+        fontWeight: 'bold',
+        cursor: 'pointer',
     }
     if (marriagePledgeHover) {
-        lowerTextStyle  = {
-            ...lowerTextStyle,
-            cursor: 'pointer',
+        linkStyle  = {
+            ...linkStyle,
             color: 'gray'
         }
     }
     return (
         <div id="entry-view" style={entryViewStyle}>
             <div style={upperTextStyle}>Too old to be single? Take the</div>
-            <div onMouseOver={marriagePledgeHoverOn}
-                onMouseLeave={marriagePledgeHoverOff}
-                style={lowerTextStyle}>Marriage Pledge</div>
+            <div style={lowerTextStyle}>
+                <Link onMouseOver={marriagePledgeHoverOn}
+                 onMouseLeave={marriagePledgeHoverOff}
+                style={linkStyle} to="/signup">Marriage Pledge</Link>
+            </div>
         </div>
     )
 }
@@ -56,11 +63,11 @@ const HowItWorks = () => {
     const steps = [
         { 
             image: "http://www.freeiconspng.com/uploads/handshake-icon-19.png",
-            text: "Choose a cause to sponsor and we place a hold for $5000 on your credit card in their name"
+            text: "Choose a cause to sponsor and authorize us to make a future charge of $5000 to your credit card."
         },
         {
             image: "https://d30y9cdsu7xlg0.cloudfront.net/png/34294-200.png",
-            text: "You have 1 year to get married. Send us a copy of your marriage certificate within one year, and we will remove the hold on your card."
+            text: "You have 1 year to get married. Send us a copy of your marriage certificate within one year, and you're off the hook!"
         },
         {
             image: "https://cdn4.iconfinder.com/data/icons/medical-blood-1/512/donation-512.png",
@@ -99,12 +106,12 @@ const Step = ({ image, text }) => {
     )
 }
 
-const SignUp = () => {
+const FAQ = () => {
     return (
-        <div id="signup">
-        </div>
+        <div></div>
     )
 }
+
 
 let Landing = ({ marriagePledgeHover, marriagePledgeHoverOn, marriagePledgeHoverOff }) => {
     
@@ -114,7 +121,7 @@ let Landing = ({ marriagePledgeHover, marriagePledgeHoverOn, marriagePledgeHover
             marriagePledgeHoverOn={marriagePledgeHoverOn}  
             marriagePledgeHoverOff={marriagePledgeHoverOff}  />
             <HowItWorks />
-            <SignUp />
+            <FAQ />
         </div>
     )
 }
